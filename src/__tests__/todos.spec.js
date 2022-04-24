@@ -79,14 +79,15 @@ describe('Todos', () => {
       })
       .set('username', userResponse.body.username);
 
-    const response = await request(app)
+      
+      const response = await request(app)
       .put(`/todos/${todoResponse.body.id}`)
       .send({
         title: 'update title',
         deadline: todoDate
       })
       .set('username', userResponse.body.username);
-
+      
     expect(response.body).toMatchObject({
       title: 'update title',
       deadline: todoDate.toISOString(),
